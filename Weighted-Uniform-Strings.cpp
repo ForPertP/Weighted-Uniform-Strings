@@ -1,3 +1,19 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+/*
+ * Complete the 'weightedUniformStrings' function below.
+ *
+ * The function is expected to return a STRING_ARRAY.
+ * The function accepts following parameters:
+ *  1. STRING s
+ *  2. INTEGER_ARRAY queries
+ */
+ 
 vector<string> weightedUniformStrings(string s, vector<int> queries)
 {
     vector<string> result;
