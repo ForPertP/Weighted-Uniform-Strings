@@ -17,38 +17,64 @@ string rtrim(const string &);
 vector<string> weightedUniformStrings(string s, vector<int> queries)
 {
     vector<string> result;
-    std::map<int, bool> mp;
+    unordered_set<int> weights;
+    
     int check = 1;
     
     for (int i = 0; i < s.size(); ++i)
     {
-        if (i+1 != s.size() && s[i+1] == s[i])
+        check = 1;
+        while (i + 1 < s.size() && s[i + 1] == s[i])
         {
             check++;
+            i++;
         }
-        else
+        
+        for (int j = 1; j <= check; ++j)
         {
-            check = 1;
+            weights.insert((s[i] - 'a' + 1) * j);
         }
-            
-        mp[(s[i]-96) * check] = true;
     }
     
-    for (int i = 0; i < queries.size(); ++i)
+    for (int query : queries)
     {
-        if (mp[queries[i]] == true)
-        {
-            result.emplace_back("Yes");
-        }
-        else
-        {
-            result.emplace_back("No");
-        }
+        result.emplace_back(weights.count(query) ? "Yes" : "No");
     }
     
     return result;
 }
 
+
+vector<string> weightedUniformStrings2(string s, vector<int> queries)
+{
+    vector<string> result;
+    map<int, bool> mp;
+    
+    int check = 1;
+    
+    for (int i = 0; i < s.size(); ++i)
+    {
+        check = 1;
+        
+        while (i + 1 < s.size() && s[i + 1] == s[i])
+        {
+            check++;
+            i++;
+        }
+        
+        for (int j = 1; j <= check; ++j)
+        {
+            mp[(s[i] - 'a' + 1) * j] = true;
+        }
+    }
+    
+    for (int query : queries)
+    {
+        result.emplace_back(mp.find(query) != mp.end() ? "Yes" : "No");
+    }
+    
+    return result;
+}
 
 
 int main()
