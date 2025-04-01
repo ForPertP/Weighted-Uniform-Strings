@@ -14,4 +14,16 @@ using System;
 
 class Result
 {
+   /*
+     * Complete the 'weightedUniformStrings' function below.
+     *
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts following parameters:
+     *  1. STRING s
+     *  2. INTEGER_ARRAY queries
+     */
+
+    public static List<string> weightedUniformStrings(string s, List<int> queries)
+    {
+    }
 }
