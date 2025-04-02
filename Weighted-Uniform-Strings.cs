@@ -54,5 +54,33 @@ class Result
         return result;
     }    
 
-
+    public static List<string> weightedUniformStrings(string s, List<int> queries)
+    {
+        List<string> result = new List<string>();
+        HashSet<int> weights = new HashSet<int>();
+        
+        int check = 1;
+        
+        for (int i = 0; i < s.Length; ++i)            
+        {
+            check = 1;
+            while (i + 1 < s.Length && s[i + 1] == s[i])    
+            {
+                check++;
+                i++;
+            }
+            
+            for (int j = 1; j <= check; ++j)
+            {
+                weights.Add((s[i] - 'a' + 1) * j);
+            }
+        }
+        
+        foreach (int query in queries)
+        {
+            result.Add(weights.Contains(query) ? "Yes" : "No");
+        }
+        
+        return result;
+    }
 }
