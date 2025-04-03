@@ -54,4 +54,67 @@ class Result
         return result;
     }    
 
+
+    public static List<string> weightedUniformStrings2(string s, List<int> queries)
+    {
+        List<string> result = new List<string>();
+        Dictionary<int, bool> mp = new();
+        
+        int check = 1;
+        
+        for (int i = 0; i < s.size(); ++i)
+        {
+            check = 1;
+            
+            while (i + 1 < s.Length && s[i + 1] == s[i])
+            {
+                check++;
+                i++;
+            }
+            
+            for (int j = 1; j <= check; ++j)
+            {
+                mp[(s[i] - 'a' + 1) * j] = (true);
+            }
+        }
+        
+        foreach (int query in queries)
+        {
+            result.Add(mp.ContainsKey(query) ? "Yes" : "No");
+        }
+        
+        return result;
+    }    
+
+   public static List<string> weightedUniformStrings2(string s, List<int> queries)
+    {
+        List<string> result = new List<string>();
+        SortedDictionary<int, bool> mp = new SortedDictionary<int, bool>();
+
+        int check = 1;
+
+        for (int i = 0; i < s.Length; ++i)
+        {
+            check = 1;
+
+            while (i + 1 < s.Length && s[i + 1] == s[i])
+            {
+                check++;
+                i++;
+            }
+
+            for (int j = 1; j <= check; ++j)
+            {
+                mp[(s[i] - 'a' + 1) * j] = true;
+            }
+        }
+
+        foreach (int query in queries)
+        {
+            result.Add(mp.ContainsKey(query) ? "Yes" : "No");
+        }
+
+        return result;
+    }    
+    
 }
