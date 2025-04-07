@@ -14,7 +14,7 @@ class Result {
   public static List<String> weightedUniformStrings(String s, List<Integer> queries) {
     
   }
-
+d
     public static List<String> weightedUniformStrings(String s, List<Integer> queries)
     {
         List<String> result = new ArrayList<>();
