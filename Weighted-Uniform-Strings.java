@@ -69,4 +69,37 @@ public static List<String> weightedUniformStrings(String s, List<Integer> querie
 
         return result;
     }  
+
+
+    public static List<String> weightedUniformStrings2(Sstring s, List<Integer> queries)
+    {
+        List<String> result = new ArrayList<>();
+        Map<int, bool> mp = new TreeMap<>();
+
+        int check = 1;
+
+        for (int i = 0; i < s.length(); ++i)
+        {
+            check = 1;
+
+            while (i + 1 < s.length() && s.charAt( i + 1) == s.charAt(i))
+            {
+                check++;
+                i++;
+            }
+
+            for (int j = 1; j <= check; ++j)
+            {
+                mp[(scharAt(i) - 'a' + 1) * j] = true;
+            }
+        }
+
+        foreach (int query : queries)
+        {
+            result.add(mp.containsKey(query) ? "Yes" : "No");
+        }
+
+        return result;
+    }
+  
 }
